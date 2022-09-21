@@ -1,27 +1,59 @@
 import { connect } from "react-redux";
+import { setActiveUser } from "../actions/activeUser";
+
 function UserPicker(props) {
   // console.log("userpicker props:", props);
-  const filteredUsers = Object.values(props.users).map((user) => {
-    return [user.id, user.name];
-  });
-  // console.log("userpicker filtered:", filteredUsers);
+  const filteredUsers = props.users
+    ? Object.values(props.users).map((user) => {
+        return [user.id, user.name];
+      })
+    : [];
+  const activeUserData = props.users ? props.users[props.activeUser] : {};
 
-  // console.log("filtered userd: ", filteredUsers);
+  let selectedUserID = props.activeUser;
+  const updateSelected = (e) => {
+    e.preventDefault();
+    selectedUserID = e.target.value;
+  };
+  const chooseUserClick = (e) => {
+    e.preventDefault();
+    props.dispatch(setActiveUser(selectedUserID));
+  };
   return (
-    <div className="center-objects">
-      <p>PICK YOUR USER</p>
+    <div className="user-picker">
+      <p>
+        <strong>
+          {activeUserData
+            ? `Current user choosen: ${activeUserData.name}`
+            : "No user selected"}
+        </strong>
+      </p>
+      <h4>PICK YOUR USER</h4>
 
-      <select>
+      <select defaultValue="none" onChange={updateSelected}>
+        <option disabled value="none">
+          Choose a valid user
+        </option>
         {filteredUsers.map(([id, name]) => {
-          return <option key={id}>{name}</option>;
+          return (
+            <option value={id} key={id}>
+              {name}
+            </option>
+          );
         })}
       </select>
-      <button style={{ fontWeight: "bold" }}>CHOOSE USER</button>
+      <button
+        className="user-picker-btn"
+        onClick={chooseUserClick}
+        style={{ fontWeight: "bold" }}
+      >
+        CHOOSE USER
+      </button>
     </div>
   );
 }
 
 const mapStateToProps = (state) => {
-  return { users: state.users };
+  return { ...state.activeUser, users: state.users };
 };
-export default connect(mapStateToProps, null)(UserPicker);
+export default connect(mapStateToProps)(UserPicker);
