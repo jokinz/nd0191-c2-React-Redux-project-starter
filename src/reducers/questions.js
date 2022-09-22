@@ -7,6 +7,13 @@ export default function questions(state = {}, action) {
         ...state,
         ...action.questions,
       };
+    case ADD_QUESTION:
+      // console.log(action.question);
+      const updatedQuestions = {
+        ...state,
+        [action.question.id]: action.question,
+      };
+      return { ...updatedQuestions };
     default:
       return state;
   }

@@ -7,6 +7,8 @@ import UserPicker from "./UserPicker";
 import LoadingBar from "react-redux-loading-bar";
 import { Routes, Route } from "react-router-dom";
 import NewQuestion from "./NewQuestion";
+import Leaderboard from "./Leaderboard";
+import QuestionDetails from "./QuestionDetails";
 
 const App = (props) => {
   // console.log("app props", props);
@@ -25,14 +27,21 @@ const App = (props) => {
               exact
               element={props.activeUser ? <QuestionsPage /> : <UserPicker />}
             />
-            <Route path="/select-user" element={<UserPicker />} />
+            <Route exact path="/select-user" element={<UserPicker />} />
             <Route
+              exact
               path="/questions"
               element={props.activeUser ? <QuestionsPage /> : <UserPicker />}
             />
             <Route
+              exact
               path="/add"
               element={props.activeUser ? <NewQuestion /> : <UserPicker />}
+            />
+            <Route exact path="/leaderboard" element={<Leaderboard />} />
+            <Route
+              path="/questions/:id"
+              element={props.activeUser ? <QuestionDetails /> : <UserPicker />}
             />
             {/* <Route path="/new" element={<NewTweet />} /> */}
           </Routes>

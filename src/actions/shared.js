@@ -10,7 +10,7 @@ export function handleInitialData() {
     return getInitialData().then(({ users, questions }) => {
       dispatch(receiveUsers(users));
       dispatch(receiveQuestions(questions));
-      //TODO change hardcoded active user
+      //TODO remove hardcoded active user
       dispatch(setActiveUser("sarahedo"));
       dispatch(hideLoading());
     });

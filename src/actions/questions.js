@@ -1,5 +1,6 @@
 import { hideLoading, showLoading } from "react-redux-loading-bar";
 import { saveQuestion } from "../utils/api";
+import { addQuestionToUser } from "./users";
 
 export const RECEIVE_QUESTIONS = "RECEIVE_QUESTIONS";
 export const ADD_QUESTION = "ADD_QUESTION";
@@ -20,14 +21,18 @@ function addQuestion(question) {
 
 export function handleAddQuestion(question) {
   return (dispatch, getState) => {
-    console.log("handleAddQuestion called");
-    //   const activeUser = getState();
-
-    //   dispatch(showLoading());
-    //   return saveQuestion({
-    //     //TODO build question data
-    //   })
-    //     .then((question) => dispatch(addQuestion(question)))
-    //     .then(() => dispatch(hideLoading()));
+    // console.log("question pre format:", question);
+    dispatch(showLoading());
+    return saveQuestion({
+      optionOneText: question.optionOneText,
+      optionTwoText: question.optionTwoText,
+      author: question.author,
+    })
+      .then((question) => {
+        dispatch(addQuestion(question));
+        // console.log("new question id:", question.id);
+        dispatch(addQuestionToUser(question));
+      })
+      .then(() => dispatch(hideLoading()));
   };
 }

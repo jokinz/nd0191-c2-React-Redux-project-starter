@@ -1,6 +1,4 @@
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import { handleAddQuestion } from "../actions/questions";
 
 function Question(props) {
   // console.log("question props:", props);
@@ -17,54 +15,54 @@ function Question(props) {
       return user === activeUser;
     });
 
-  const handleQuestionClick = (e) => {
-    // e.preventDefault();
-    props.dispatch(handleAddQuestion(selectedQuestion.id));
-    // console.log(selectedQuestion.id);
-  };
   return (
-    <Link to={`/question/${selectedQuestion.id}`}>
+    <div
+      className={
+        anweredQuestion
+          ? "question-list-item"
+          : "question-list-item unansweredQuestion"
+      }
+    >
+      <div className="question-author-info">
+        <img
+          className="question-author-photo"
+          src={questionAuthorData.avatarURL}
+        />
+        <p className="question-author-name">
+          <strong>{questionAuthorData.name}</strong>
+        </p>
+      </div>
+      <h2 className="align-center question-caption">Would you rather</h2>
       <div
-        onClick={handleQuestionClick}
         className={
-          anweredQuestion
-            ? "question-list-item"
-            : "question-list-item unansweredQuestion"
+          optionOne.votes.some((answer) => {
+            return answer === activeUser;
+          })
+            ? "answer answer-selected"
+            : "answer answer-not-selected"
         }
       >
-        <p className="question-item-author">
-          Question asked by <strong>{questionAuthorData.name}</strong>
-        </p>
-        <h3>Would you rather</h3>
-        <div
-          className={
-            optionOne.votes.some((answer) => {
-              return answer === activeUser;
-            })
-              ? "answer-selected"
-              : "answer-not-selected"
-          }
-        >
-          {optionOne.text}
-          <br></br>
+        <p className="answer-text">{optionOne.text}</p>
+        <p>
           Voted by <strong>{optionOne.votes.length}</strong> people
-        </div>
-        <p>or</p>
-        <div
-          className={
-            optionTwo.votes.some((answer) => {
-              return answer === activeUser;
-            })
-              ? "answer-selected"
-              : "answer-not-selected"
-          }
-        >
-          {optionTwo.text}
-          <br></br>
-          Voted by <strong>{optionTwo.votes.length}</strong> people
-        </div>
+        </p>
       </div>
-    </Link>
+      <p className="align-center">or</p>
+      <div
+        className={
+          optionTwo.votes.some((answer) => {
+            return answer === activeUser;
+          })
+            ? "answer answer-selected"
+            : "answer answer-not-selected"
+        }
+      >
+        <p className="answer-text">{optionTwo.text}</p>
+        <p>
+          Voted by <strong>{optionTwo.votes.length}</strong> people
+        </p>
+      </div>
+    </div>
   );
 }
 

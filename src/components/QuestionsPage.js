@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { connect } from "react-redux";
 import Question from "./Question";
+import { Link } from "react-router-dom";
 
 const ANSWERED = "ANSWERED";
 const UNSANSWERED = "UNSANSWERED";
@@ -45,11 +46,11 @@ function Questions(props) {
         setFilterType(UNSANSWERED);
     }
   }
-  console.log("filterType:", filterType);
+  // console.log("filterType:", filterType);
   return (
     <div className="question-container">
       <h1 className="title">QUESTIONS LIST </h1>
-      <select value={filterType} onChange={handleQuestionsSelectChange}>
+      <select value={filterType.filter} onChange={handleQuestionsSelectChange}>
         <option value={UNSANSWERED}>Unanswered questions</option>
         <option value={ANSWERED}>Answered questions</option>
         <option value={ALL}>All the questions</option>
@@ -58,7 +59,9 @@ function Questions(props) {
         {Object.values(filterType.questions).map((question) => {
           return (
             <li key={question.id}>
-              <Question id={question.id} />
+              <Link to={`/questions/${question.id}`}>
+                <Question id={question.id} />
+              </Link>
             </li>
           );
         })}

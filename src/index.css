@@ -37,6 +37,26 @@ select {
   margin-bottom: 10px;
 }
 
+table {
+  margin: auto;
+}
+
+table,
+th,
+td {
+  border: 1px solid white;
+  border-collapse: collapse;
+}
+th,
+td {
+  background-color: #96d4d4;
+  padding: 5px;
+}
+
+.align-center {
+  text-align: center;
+}
+
 .title {
   text-align: center;
 }
@@ -78,28 +98,6 @@ select {
   width: min-content;
 }
 
-.question-container {
-  margin: 0 5%;
-}
-
-.question-list {
-  margin: 30px 0;
-}
-
-.question-list-item {
-  border: 1px solid #ccc;
-  padding: 20px;
-  margin-bottom: 50px;
-}
-
-.question-list-item:hover {
-  border: 1px solid #000;
-}
-
-.question-item-author {
-  text-align: right;
-}
-
 .user-picker {
   padding: 50px;
   background-color: #ccc;
@@ -121,13 +119,61 @@ select {
   padding: 5px;
 }
 
+.question-container {
+  margin: 0 5%;
+}
+
+.question-list {
+  margin: 30px 0;
+}
+
+.question-list-item {
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin-bottom: 50px;
+}
+
+.question-list-item:hover {
+  border: 1px solid #000;
+}
+
+.question-author-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.question-author-photo {
+  max-width: 50px;
+  border-radius: 100%;
+}
+
+.question-author-name {
+  text-align: left;
+  margin-left: 20px;
+}
+
+.question-caption {
+  margin-bottom: 20px;
+}
+
+.answer {
+  text-align: center;
+  padding: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.answer-text {
+  font-weight: bold;
+}
 .answer-selected {
   background-color: lightgreen;
 }
 .answer-not-selected {
-  background-color: lightcoral;
+  background-color: lightpink;
 }
 
 .unansweredQuestion {
-  background-color: khaki;
+  background-color: rgb(255, 249, 194);
 }

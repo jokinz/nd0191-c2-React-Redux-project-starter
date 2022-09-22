@@ -24,14 +24,17 @@ function Nav(props) {
           <Link to="/questions">Questions</Link>
         </li>
         <li>
-          <Link to="/add">New question</Link>
+          <Link to="/leaderboard">Leaderboard</Link>
+        </li>
+        <li>
+          <Link to="/add">Ask a question</Link>
         </li>
       </ul>
       <div className="nav-user-info">
         <span>
           Current user: <strong>{activeUserName}</strong>
         </span>
-        {props.user.activeUser !== "" && (
+        {activeUserName !== "none" && (
           <Link onClick={logoutClick} to="/">
             Logout
           </Link>
