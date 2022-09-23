@@ -9,20 +9,28 @@ const ALL = "ALL";
 
 function Questions(props) {
   // console.log("questions list props:", props);
-
-  const questionsAnswered = props.questions.filter((question) => {
+  const sortedQuestions = Object.values(props.questions)
+    .map((question) => {
+      return {
+        id: question.id,
+        optionVotes: [...question.optionOne.votes, ...question.optionTwo.votes],
+        timestamp: question.timestamp,
+      };
+    })
+    .sort((a, b) => b.timestamp - a.timestamp);
+  const questionsAnswered = sortedQuestions.filter((question) => {
     return [...question.optionVotes].some((user) => {
       return user === props.activeUser;
     });
   });
   // console.log("question answered:", questionsAnswered);
 
-  const questionsNotAnswered = props.questions.filter((question) => {
+  const questionsNotAnswered = sortedQuestions.filter((question) => {
     return ![...question.optionVotes].some((user) => {
       return user === props.activeUser;
     });
   });
-  // console.log("question not answered:", questionsNotAnswered);
+  console.log("question not answered:", questionsNotAnswered);
   // console.log("filteredQuestions:", filteredQuestions);
 
   const [filterType, setFilterType] = useState({
@@ -40,7 +48,7 @@ function Questions(props) {
         setFilterType({ filter: ANSWERED, questions: questionsAnswered });
         break;
       case ALL:
-        setFilterType({ filter: ALL, questions: props.questions });
+        setFilterType({ filter: ALL, questions: sortedQuestions });
         break;
       default:
         setFilterType(UNSANSWERED);
@@ -71,12 +79,16 @@ function Questions(props) {
 }
 
 const mapStateToProps = (state) => {
-  const questions = Object.values(state.questions).map((question) => {
-    return {
-      id: question.id,
-      optionVotes: [...question.optionOne.votes, ...question.optionTwo.votes],
-    };
-  });
-  return { activeUser: state.activeUser.activeUser, questions: questions };
+  // const questions = Object.values(state.questions).map((question) => {
+  //   return {
+  //     id: question.id,
+  //     optionVotes: [...question.optionOne.votes, ...question.optionTwo.votes],
+  //     timestamp: question.timestamp,
+  //   };
+  // });
+  return {
+    activeUser: state.activeUser.activeUser,
+    questions: state.questions,
+  };
 };
 export default connect(mapStateToProps)(Questions);

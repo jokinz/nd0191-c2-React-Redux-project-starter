@@ -31,9 +31,21 @@ function Nav(props) {
         </li>
       </ul>
       <div className="nav-user-info">
-        <span>
-          Current user: <strong>{activeUserName}</strong>
-        </span>
+        <div>
+          <span>
+            Current user: <strong>{activeUserName}</strong>
+          </span>
+          {activeUserName !== "none" ? (
+            <img
+              alt={activeUserData.name}
+              className="author-photo"
+              src={activeUserData.avatarURL}
+            />
+          ) : (
+            ""
+          )}
+        </div>
+
         {activeUserName !== "none" && (
           <Link onClick={logoutClick} to="/">
             Logout

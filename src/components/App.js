@@ -12,6 +12,7 @@ import QuestionDetails from "./QuestionDetails";
 
 const App = (props) => {
   // console.log("app props", props);
+  // console.log("state", props.state);
   useEffect(() => {
     props.dispatch(handleInitialData());
   }, []);
@@ -38,7 +39,11 @@ const App = (props) => {
               path="/add"
               element={props.activeUser ? <NewQuestion /> : <UserPicker />}
             />
-            <Route exact path="/leaderboard" element={<Leaderboard />} />
+            <Route
+              exact
+              path="/leaderboard"
+              element={props.activeUser ? <Leaderboard /> : <UserPicker />}
+            />
             <Route
               path="/questions/:id"
               element={props.activeUser ? <QuestionDetails /> : <UserPicker />}
@@ -67,6 +72,8 @@ const mapStateToProps = (state) => {
   return {
     activeUser,
     loading: { ...state.activeUser } === null,
+    //TODO remove state from props
+    // state,
   };
 };
 

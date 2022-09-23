@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { handleAddQuestion } from "../actions/questions";
@@ -17,31 +17,44 @@ function NewQuestion(props) {
     setOptionTwoText(e.target.value);
   };
 
+  useEffect(() => {
+    setOptionOneText("");
+    setOptionTwoText("");
+  }, []);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const question = { optionOneText, optionTwoText, author };
-    // TODO add correct parameters to handleAddQUestion
-    props.dispatch(handleAddQuestion(question));
-
-    // navigate("/");
+    props.dispatch(handleAddQuestion(question)).then(() => {
+      navigate("/");
+      setOptionOneText("");
+      setOptionTwoText("");
+    });
   };
 
   return (
-    <div>
+    <div className="new-question-container">
       <h1 className="title">New question </h1>
-      <h2>Would you rather</h2>
+      <h2 className="new-question-would-you align-center">Would you rather</h2>
       <input
+        className="new-question-input"
         value={optionOneText}
         onChange={handleOptionOneChange}
         placeholder="Option 1"
       ></input>
-      or
+      <span>or</span>
       <input
+        className="new-question-input"
         value={optionTwoText}
         onChange={handleOptionTwoChange}
         placeholder="Option 2"
       ></input>
-      <button onClick={handleSubmit}>Submit</button>
+      <button
+        className="new-question-submit-btn submit-btn"
+        onClick={handleSubmit}
+      >
+        Submit
+      </button>
     </div>
   );
 }

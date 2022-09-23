@@ -22,15 +22,18 @@ export default function users(state = {}, action) {
         },
       };
     case ADD_ANSWER_TO_USER:
-      //TODO modify state to update user answers
+      const authedUser = action.answer.authedUser;
+      const qid = action.answer.qid;
+      const answer = action.answer.answer;
       return {
         ...state,
-        // [action.question.author]: {
-        //   ...state[action.question.author],
-        //   answers: state[action.question.author].questions.concat([
-        //     action.question.id,
-        //   ]),
-        // },
+        [authedUser]: {
+          ...state[authedUser],
+          answers: {
+            ...state[authedUser].answers,
+            [qid]: answer,
+          },
+        },
       };
     default:
       return state;
