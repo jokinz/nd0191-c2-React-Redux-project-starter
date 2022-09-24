@@ -9,6 +9,15 @@ function Question(props) {
   const optionOne = selectedQuestion.optionOne;
   const optionTwo = selectedQuestion.optionTwo;
   const totalVotes = optionOne.votes.length + optionTwo.votes.length;
+  const prettyDate = (time) => {
+    var date = new Date(parseInt(time));
+    return date.toLocaleTimeString(navigator.language, {
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+    });
+  };
+
   const answer = (activeUser) => {
     if (
       optionOne.votes.some((user) => {
@@ -69,6 +78,10 @@ function Question(props) {
         answerData={optionTwo}
         totalVotes={totalVotes}
       />
+      <p>
+        Question submitted at:{" "}
+        <strong>{prettyDate(selectedQuestion.timestamp)}</strong>
+      </p>
     </div>
   );
 }
