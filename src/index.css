@@ -1,0 +1,232 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  /* text-decoration: none; */
+  list-style: none;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+p,
+h2,
+h3 {
+  margin: 0;
+}
+
+select {
+  font-size: 20px;
+  padding: 10px 5px;
+  margin-bottom: 10px;
+}
+
+table {
+  margin: auto;
+}
+
+table,
+th,
+td {
+  border: 1px solid white;
+  border-collapse: collapse;
+}
+th,
+td {
+  background-color: #96d4d4;
+  padding: 5px;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.title {
+  text-align: center;
+}
+.nav-container {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px 20px;
+  margin-bottom: 100px;
+}
+
+.nav-container a {
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+}
+
+.nav-container a:hover {
+  text-decoration: underline;
+}
+
+.nav-menu-list {
+  display: flex;
+  flex-direction: row;
+}
+
+.nav-menu-list > li {
+  margin: 0 5px;
+}
+
+.nav-user-info {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.nav-user-info > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.nav-user-info > div * {
+  margin: 0 5px;
+}
+
+.nav-user-info a {
+  width: min-content;
+}
+
+.user-picker {
+  padding: 50px;
+  background-color: #ccc;
+  border: 1px solid #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  max-width: 40%;
+  margin: 0 auto;
+}
+
+.user-picker > * {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.user-picker-btn {
+  padding: 5px;
+}
+
+.question-container {
+  margin: 0 5%;
+}
+
+.question-list {
+  margin: 30px 0;
+}
+
+.question-list-item {
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin-bottom: 50px;
+}
+
+.question-list-item:hover {
+  border: 1px solid #000;
+}
+
+.question-author-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.author-photo {
+  max-width: 50px;
+  border-radius: 100%;
+}
+
+.question-author-name {
+  text-align: left;
+  margin-left: 20px;
+}
+
+.question-caption {
+  margin-bottom: 20px;
+}
+
+.new-question-container {
+  width: 50%;
+  margin: auto;
+  border: 1px solid black;
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  font-size: 20px;
+}
+
+.new-question-would-you {
+  margin-bottom: 30px;
+}
+
+.new-question-input {
+  padding: 5px;
+  margin: 0 10px;
+  font-size: 20px;
+}
+
+.new-question-submit-btn {
+  margin-top: 30px;
+}
+.submit-btn {
+  font-size: 20px;
+  padding: 10px 30px;
+  margin-top: 10px;
+}
+
+.answer {
+  text-align: center;
+  padding: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.answer-text {
+  font-weight: bold;
+}
+.answer-selected {
+  background-color: lightgreen;
+}
+.answer-not-selected {
+  background-color: lightpink;
+}
+
+.unanswered-question {
+  background-color: rgb(255, 249, 194);
+}
+.unanswered-question .answer {
+  border: 1px solid #ccc;
+}
+
+.leaderboard-table td > * {
+  vertical-align: middle;
+  padding: 0 5px;
+}
+.leaderboard-table td {
+  padding: 10px;
+}
