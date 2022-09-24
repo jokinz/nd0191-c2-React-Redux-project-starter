@@ -24,12 +24,14 @@ function NewQuestion(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const question = { optionOneText, optionTwoText, author };
-    props.dispatch(handleAddQuestion(question)).then(() => {
-      navigate("/");
-      setOptionOneText("");
-      setOptionTwoText("");
-    });
+    if (optionOneText !== "" && optionTwoText !== "") {
+      const question = { optionOneText, optionTwoText, author };
+      props.dispatch(handleAddQuestion(question)).then(() => {
+        navigate("/");
+        setOptionOneText("");
+        setOptionTwoText("");
+      });
+    }
   };
 
   return (
@@ -37,6 +39,7 @@ function NewQuestion(props) {
       <h1 className="title">New question </h1>
       <h2 className="new-question-would-you align-center">Would you rather</h2>
       <input
+        data-testid="option-one-input"
         className="new-question-input"
         value={optionOneText}
         onChange={handleOptionOneChange}
@@ -44,6 +47,7 @@ function NewQuestion(props) {
       ></input>
       <span>or</span>
       <input
+        data-testid="option-two-input"
         className="new-question-input"
         value={optionTwoText}
         onChange={handleOptionTwoChange}

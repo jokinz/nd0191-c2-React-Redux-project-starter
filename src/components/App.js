@@ -12,7 +12,6 @@ import QuestionDetails from "./QuestionDetails";
 
 const App = (props) => {
   // console.log("app props", props);
-  // console.log("state", props.state);
   useEffect(() => {
     props.dispatch(handleInitialData());
   }, []);
@@ -48,21 +47,9 @@ const App = (props) => {
               path="/questions/:id"
               element={props.activeUser ? <QuestionDetails /> : <UserPicker />}
             />
-            {/* <Route path="/new" element={<NewTweet />} /> */}
           </Routes>
         )}
       </div>
-
-      {/* <div className="container">
-        <Nav />
-        {props.loading === true ? null : (
-          <Routes>
-            <Route path="/" exact element={<Dashboard />} />
-            <Route path="/tweet/:id" element={<TweetPage />} />
-            <Route path="/new" element={<NewTweet />} />
-          </Routes>
-        )}
-      </div> */}
     </Fragment>
   );
 };
@@ -72,8 +59,6 @@ const mapStateToProps = (state) => {
   return {
     activeUser,
     loading: { ...state.activeUser } === null,
-    //TODO remove state from props
-    // state,
   };
 };
 

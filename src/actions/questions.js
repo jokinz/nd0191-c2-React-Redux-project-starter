@@ -29,7 +29,6 @@ function addAnswerToQuestion(answer) {
 
 export function handleAddQuestion(question) {
   return (dispatch, getState) => {
-    // console.log("question pre format:", question);
     dispatch(showLoading());
     return saveQuestion({
       optionOneText: question.optionOneText,
@@ -38,7 +37,6 @@ export function handleAddQuestion(question) {
     })
       .then((question) => {
         dispatch(addQuestion(question));
-        // console.log("new question id:", question.id);
         dispatch(addQuestionToUser(question));
       })
       .then(() => dispatch(hideLoading()));
@@ -47,10 +45,8 @@ export function handleAddQuestion(question) {
 export function handleAddAnswer(answer) {
   return (dispatch, getState) => {
     dispatch(showLoading());
-    // console.log("answer pre return", answer);
     return saveQuestionAnswer(answer)
       .then(() => {
-        // console.log("answer post return", answer);
         dispatch(addAnswerToUser(answer));
         dispatch(addAnswerToQuestion(answer));
       })

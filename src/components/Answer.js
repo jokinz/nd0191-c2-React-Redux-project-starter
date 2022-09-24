@@ -3,7 +3,6 @@ import { handleAddAnswer } from "../actions/questions";
 
 const Answer = (props) => {
   //   console.log("answer props:", props);
-  // console.log("answer status:", props.answerStatus);
   const percentage = (option) => {
     return Math.round((option.votes.length / props.totalVotes) * 100);
   };
@@ -17,7 +16,6 @@ const Answer = (props) => {
         answer: props.answerValue,
       })
     );
-    // console.log(props.answerValue);
   };
   return (
     <div
@@ -31,7 +29,11 @@ const Answer = (props) => {
       {props.answerStatus ? (
         ""
       ) : (
-        <button className="submit-btn" onClick={handleAnswerClick}>
+        <button
+          data-testid="submit-btn"
+          className="submit-btn"
+          onClick={handleAnswerClick}
+        >
           Choose answer
         </button>
       )}
@@ -53,8 +55,6 @@ const Answer = (props) => {
 
 const mapStateToProps = (state) => {
   const { activeUser } = state.activeUser;
-  //   const users = state.users;
-  //   const questions = state.questions;
   return {
     activeUser,
   };

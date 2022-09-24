@@ -23,15 +23,12 @@ function Questions(props) {
       return user === props.activeUser;
     });
   });
-  // console.log("question answered:", questionsAnswered);
 
   const questionsNotAnswered = sortedQuestions.filter((question) => {
     return ![...question.optionVotes].some((user) => {
       return user === props.activeUser;
     });
   });
-  console.log("question not answered:", questionsNotAnswered);
-  // console.log("filteredQuestions:", filteredQuestions);
 
   const [filterType, setFilterType] = useState({
     filter: UNSANSWERED,
@@ -39,7 +36,6 @@ function Questions(props) {
   });
   function handleQuestionsSelectChange(e) {
     e.preventDefault();
-    // console.log(e.target.value);
     switch (e.target.value) {
       case UNSANSWERED:
         setFilterType({ filter: UNSANSWERED, questions: questionsNotAnswered });
@@ -54,7 +50,6 @@ function Questions(props) {
         setFilterType(UNSANSWERED);
     }
   }
-  // console.log("filterType:", filterType);
   return (
     <div className="question-container">
       <h1 className="title">QUESTIONS LIST </h1>
@@ -79,13 +74,6 @@ function Questions(props) {
 }
 
 const mapStateToProps = (state) => {
-  // const questions = Object.values(state.questions).map((question) => {
-  //   return {
-  //     id: question.id,
-  //     optionVotes: [...question.optionOne.votes, ...question.optionTwo.votes],
-  //     timestamp: question.timestamp,
-  //   };
-  // });
   return {
     activeUser: state.activeUser.activeUser,
     questions: state.questions,

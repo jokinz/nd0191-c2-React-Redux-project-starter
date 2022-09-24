@@ -30,7 +30,11 @@ function UserPicker(props) {
       </p>
       <h4>PICK YOUR USER</h4>
 
-      <select defaultValue="none" onChange={updateSelected}>
+      <select
+        data-testid="user-select"
+        defaultValue="none"
+        onChange={updateSelected}
+      >
         <option disabled value="none">
           Choose a valid user
         </option>

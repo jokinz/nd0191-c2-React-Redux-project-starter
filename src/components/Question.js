@@ -9,9 +9,6 @@ function Question(props) {
   const optionOne = selectedQuestion.optionOne;
   const optionTwo = selectedQuestion.optionTwo;
   const totalVotes = optionOne.votes.length + optionTwo.votes.length;
-  // const percentage = (option) => {
-  //   return Math.round((option.votes.length / totalVotes) * 100);
-  // };
   const answer = (activeUser) => {
     if (
       optionOne.votes.some((user) => {
@@ -29,8 +26,6 @@ function Question(props) {
     }
     return false;
   };
-  // console.log(activeUser);
-  // console.log(answer(activeUser));
 
   return (
     <div
@@ -84,8 +79,6 @@ const mapStateToProps = (state, props) => {
   const selectedQuestion = state.questions[id];
   const questionAuthorData = state.users[selectedQuestion.author];
 
-  // console.log("Ques comp state: ", state);
-  // return { state };
   return { id, activeUser, selectedQuestion, questionAuthorData };
 };
 export default connect(mapStateToProps)(Question);

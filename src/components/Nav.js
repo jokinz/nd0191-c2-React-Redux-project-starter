@@ -9,7 +9,6 @@ function Nav(props) {
     return u.id === props.user.activeUser;
   });
   const activeUserName = activeUserData ? activeUserData.name : "none";
-  // console.log("activeUserName:", activeUserName);
   const logoutClick = (e) => {
     e.preventDefault();
     props.dispatch(setActiveUser(""));
@@ -47,7 +46,7 @@ function Nav(props) {
         </div>
 
         {activeUserName !== "none" && (
-          <Link onClick={logoutClick} to="/">
+          <Link data-testid="logout-btn" onClick={logoutClick} to="/">
             Logout
           </Link>
         )}

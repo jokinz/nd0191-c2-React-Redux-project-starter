@@ -6,9 +6,3 @@ export function setActiveUser(id) {
     id,
   };
 }
-
-// export function handleUserChange(id){
-//   return dispatch =>{
-//     dispatch(setActiveUser)
-//   }
-// }

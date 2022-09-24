@@ -2,13 +2,6 @@ import { connect } from "react-redux";
 
 function Leaderboard(props) {
   // console.log("leaderboard props:", props);
-  // console.log(
-  //   "leaderboard questions:",
-  //   Object.keys(questions).length,
-  //   questions
-  // );
-  // const users = props.users;
-  // console.log("leaderboard users:", users);
   const filteredUsers = Object.values(props.users)
     .map((user) => {
       return {
@@ -23,22 +16,11 @@ function Leaderboard(props) {
       };
     })
     .sort((a, b) => b.total - a.total);
-  // console.log("leaderboard filteredUsers:", filteredUsers);
-  // console.log("leaderboard orderedUsers:", orderedUsers);
 
   return (
     <div>
       <h1 className="title">Leaderboard</h1>
       <table>
-        {/* <thead>
-          <tr>
-            <th>Tacos</th>
-            <th scope="col">
-              <abbr title="Quantity">Qty</abbr>
-            </th>
-            <th scope="col">Price</th>
-          </tr>
-        </thead> */}
         <tbody className="leaderboard-table">
           {filteredUsers.map((user) => {
             return (
