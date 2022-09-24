@@ -1,10 +1,15 @@
 # Employee Polls Project
 
-This is the starter code for the final assessment project for Udacity's React & Redux course.
+This is a the final assessment project for Udacity's React & Redux course built using the Redux pattern and React.js library.
 
-The `_DATA.js` file represents a fake database and methods that let you access the data. The only thing you need to edit in the ` _DATA.js` file is the value of `avatarURL`. Each user should have an avatar, so you’ll need to add the path to each user’s avatar.
+In the project you can pick one of the users to answer and create poll questions for everyone to interact with, there's also a leaderboard to check who has created the most questions and picked answers
 
-Using the provided starter code, you'll build a React/Redux front end for the application. We recommend using the [Create React App](https://github.com/facebook/create-react-app) to bootstrap the project.
+The `_DATA.js` file represents a fake database and methods that let you access the data. 
+
+## Install
+
+Command for installing the dependencies `- npm instal` or `yarn install`.
+Command for launching the project `- npm start` or `yarn start`.
 
 ## Data
 
